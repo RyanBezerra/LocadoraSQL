@@ -282,6 +282,21 @@ WHERE
 
 /* Questão 5 */
 
+SELECT
+    v.modelo AS ModeloVeiculo,
+    COUNT(*) AS Quantidade
+FROM
+    veiculo v
+JOIN
+    filial f ON v.codFilial = f.codigo
+JOIN
+    cidade c ON f.idCidade = c.codigo
+WHERE
+    v.valorDiaria > 100
+    AND c.populacao > 500000
+GROUP BY
+    v.modelo;
 
+/* Questão 6 */
 
 -- Dump completed on 2018-11-26 17:06:05
