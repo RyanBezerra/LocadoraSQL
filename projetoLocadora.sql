@@ -299,4 +299,21 @@ GROUP BY
 
 /* Questão 6 */
 
+SELECT
+    v.placa AS PlacaVeiculo,
+    v.modelo AS ModeloVeiculo,
+    FORMAT(AVG(c.valorPago), 2) AS ValorMedio
+FROM
+    veiculo v
+LEFT JOIN
+    contrato c ON v.id = c.idVeiculo
+GROUP BY
+    v.placa, v.modelo
+ORDER BY
+    ValorMedio DESC;
+
+/* Questão 7 */
+
+/* Questão 8 */
+
 -- Dump completed on 2018-11-26 17:06:05
