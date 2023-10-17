@@ -314,6 +314,36 @@ ORDER BY
 
 /* Questão 7 */
 
+SELECT
+    v.placa AS PlacaVeiculo,
+    v.modelo AS ModeloVeiculo,
+    v.valorDiaria AS ValorDiaria
+FROM
+    veiculo v
+WHERE
+    v.id = (
+        SELECT 
+            c.idVeiculo
+        FROM
+            contrato c
+        ORDER BY
+            c.multa DESC
+        LIMIT 1
+    );
+
 /* Questão 8 */
+
+SELECT
+    v.modelo AS ModeloVeiculo,
+    v.placa AS PlacaVeiculo
+FROM
+    veiculo v
+WHERE
+    v.id NOT IN (
+        SELECT
+            DISTINCT c.idVeiculo
+        FROM
+            contrato c
+    );
 
 -- Dump completed on 2018-11-26 17:06:05
