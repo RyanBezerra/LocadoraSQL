@@ -262,5 +262,26 @@ JOIN
 WHERE
     c.nome = 'Filomena' AND v.placa = 'MAB0002';
 
+/* Questão 4 */
+
+SELECT
+    c.nome AS Cidade,
+    f.rua AS Rua,
+    v.placa AS PlacaVeiculo,
+    v.modelo AS ModeloVeiculo,
+    v.numPortas AS NumeroDePortas
+FROM
+    veiculo v
+JOIN
+    filial f ON v.codFilial = f.codigo
+JOIN
+    cidade c ON f.idCidade = c.codigo
+WHERE
+    v.numPortas = 4
+    AND c.populacao < 100000;
+
+/* Questão 5 */
+
+
 
 -- Dump completed on 2018-11-26 17:06:05
