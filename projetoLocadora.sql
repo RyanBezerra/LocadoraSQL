@@ -210,6 +210,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+/* Questão 1 */
+
 SELECT
     c.nome AS Nome,
     t.numero AS Telefone,
@@ -223,6 +225,23 @@ JOIN telefone t ON c.codigo = t.codigoCliente
 JOIN veiculo v ON cn.idVeiculo = v.id
 ORDER BY cn.dataSaida DESC;
 
+/* Questão 2 */
 
+SELECT
+    c.nome AS Cidade,
+    c.anoFundacao AS AnoFundacao,
+    COUNT(v.id) AS TotalVeiculos
+FROM
+    cidade c
+JOIN
+    filial f ON c.codigo = f.idCidade
+LEFT JOIN
+    veiculo v ON f.codigo = v.codFilial
+GROUP BY
+    c.nome, c.anoFundacao
+HAVING
+    TotalVeiculos > 0
+ORDER BY
+    Cidade;
 
 -- Dump completed on 2018-11-26 17:06:05
