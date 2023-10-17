@@ -243,5 +243,24 @@ HAVING
     TotalVeiculos > 0
 ORDER BY
     Cidade;
+    
+/* Questão 3 */
+
+SELECT
+    c.nome AS Cliente,
+    cn.numero AS Contrato,
+    v.placa AS Placa,
+    v.modelo AS Modelo,
+    cn.dataSaida AS DataSaida,
+    cn.dataDevolucao AS DataDevolucao
+FROM
+    cliente c
+JOIN
+    contrato cn ON c.codigo = cn.codigoCliente
+JOIN
+    veiculo v ON cn.idVeiculo = v.id
+WHERE
+    c.nome = 'Filomena' AND v.placa = 'MAB0002';
+
 
 -- Dump completed on 2018-11-26 17:06:05
